@@ -14,6 +14,7 @@ function memo(conf){
     
     var d = document, // document
         t = d.createElement('table'), // table
+        b = d.querySelector(conf.id), // board
         g = { // game data
             started: false,
             gameOver: false
@@ -54,6 +55,9 @@ function memo(conf){
         console.log(t);
     }
     
+    // create board where numbers will be displayed and append table to it
+    t.className = 'game-board';
+    b.appendChild(t);
     
     
 }
