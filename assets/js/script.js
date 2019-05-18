@@ -18,7 +18,8 @@ function memo(conf){
             started: false,
             gameOver: false
             // time = 0;
-        };
+        },
+        n = 0;
         
     // numbers that going to play
     var numbers = [];
@@ -34,14 +35,21 @@ function memo(conf){
         for(var j = 0; j < conf.columns; j++){
             var td = d.createElement('td'),
                 span = d.createElement('span');
+                
+            //insert numbers
+            span.innerHTML = numbers[n];
 
             // append to table
             tr.appendChild(td);
             td.appendChild(span);
+            
+            n++;
         }
 
         t.appendChild(tr);
         console.log(t);
     }
-
+    
+    
+    
 }
