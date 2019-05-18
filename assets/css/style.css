@@ -1,3 +1,39 @@
 body {
-    background-color: orange;
+  background-color: orange;
 }
+
+/*--board style--*/
+.game-board {
+  border:1px solid #fff;
+  margin:auto;
+}
+
+.game-board td {
+  border: 1px solid #ddd;
+  height: 80px;
+  width: 80px;
+}
+
+.game-board td span {
+  background: #eee;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/*--classes used when click--*/
+.game-board td span.match {
+  background: #ff0;
+  display: flex;
+}
+
+.game-board td span.select {
+  background: #00f;
+  font-weight: bold;
+  display: flex;
+}
+
+.game-board td span.no-select {
+  display: none;
+}
+
