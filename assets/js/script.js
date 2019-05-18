@@ -22,11 +22,15 @@ function memo(conf){
         n = 0;
         
     // numbers that going to play
-    var numbers = [];
+    var nums = [];
     for(var i = 1; i <= (conf.columns*conf.rows) / 2; i++){
-        numbers.push(i);
-        console.log(numbers);
+        nums.push(i);
+        console.log(nums);
     }
+    
+    // duplicate numbers
+    var numbers = nums.concat(nums);
+    console.log(numbers);
     
     // create table
     for(var i = 0; i < conf.rows; i++){
