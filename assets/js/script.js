@@ -33,6 +33,9 @@ function memo(conf){
     var numbers = nums.concat(nums);
     console.log(numbers);
     
+    // shuffle numbers
+    numbers.sort(function() { return 0.5 - Math.random() });
+    
     // create table
     for(var i = 0; i < conf.rows; i++){
         var tr = d.createElement('tr');
@@ -58,6 +61,7 @@ function memo(conf){
     // create board where numbers will be displayed and append table to it
     t.className = 'game-board';
     b.appendChild(t);
+    console.log(b);
     
     
 }
