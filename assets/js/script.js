@@ -1,4 +1,3 @@
-// when click button 'play' call function that create the game and pass the configuration
 document.querySelector('#start').addEventListener('click', function(){
   memo({
     id: '#play',
@@ -7,74 +6,80 @@ document.querySelector('#start').addEventListener('click', function(){
   });
 
   this.remove();
-});
+})
 
-// make function that create the game
 function memo(conf){
-    
+
     var d = document, // document
         t = d.createElement('table'), // table
-        b = d.querySelector(conf.id), // board
+        b = d.querySelector('#play'), // board
+        n = 0, // numbers
+        m = d.querySelectorAll('span'), // all matched
+        // console.log(m);
         g = { // game data
+
+            picked: [],
+            playTime: Math.ceil((conf.columns*conf.rows)*2.5),
+            gameOver: false,
             started: false,
-            gameOver: false
-            // time = 0;
         },
-        n = 0;
-        
-    // numbers that going to play
-    var nums = [];
-    for(var i = 1; i <= (conf.columns*conf.rows) / 2; i++){
-        nums.push(i);
-        // console.log(nums);
-    }
-    
-    // duplicate numbers
+
+        // numbers that going to play
+        nums = [];
+            for(var i = 1; i <= (conf.columns*conf.rows) / 2; i++){
+                nums.push(i);
+                // console.log(nums);
+            }
+
+    //dublicate numbers
     var numbers = nums.concat(nums);
-    // console.log(numbers);
-    
-    // shuffle numbers
+    // shuffle total numbers
     numbers.sort(function() { return 0.5 - Math.random() });
-    
-    // create table
+
+    // create table 4rows x 4cols
     for(var i = 0; i < conf.rows; i++){
         var tr = d.createElement('tr');
 
         for(var j = 0; j < conf.columns; j++){
             var td = d.createElement('td'),
                 span = d.createElement('span');
-                
+
             //insert numbers
             span.innerHTML = numbers[n];
+
+            // add event
+            td.addEventListener('click', clicked);
+            console.log('click');
 
             // append to table
             tr.appendChild(td);
             td.appendChild(span);
-            
+
             n++;
         }
 
         t.appendChild(tr);
         // console.log(t);
     }
-    
-    // create board where numbers will be displayed and append table to it
-    t.className = 'game-board';
-    b.appendChild(t);
-    console.log(b);
-    
-    // append panel controls to the board
-    var controls = d.createElement('div');
-    controls.className = 'game-controls';
-    b.appendChild(controls);
-    console.log(controls);
-    
-    // append comments to the board
+
+
+    // append game comments to the board
     var comments = d.createElement('div');
     comments.className = 'game-comments';
     b.appendChild(comments);
 
-    // start game function + timer after 5 seconds ..
+    // create board where numbers will be displayed and append table to it
+    t.className = 'game-board';
+    b.appendChild(t);
+    console.log(b);
+
+    // append panel controls to the board
+    var controls = d.createElement('div');
+    controls.className = 'game-controls';
+    b.appendChild(controls);
+
+
+    // start game after 4 seconds .. clear numbers and start time for playing
     function start(){
         var time = Math.ceil((conf.columns * conf.rows)*0.25);
 
@@ -82,6 +87,8 @@ function memo(conf){
             controls.innerHTML = 'The game starts in ... ' + time + ' seconds';
 
             if(time === 0){
+                clearNums();
+                countDown();
                 g.started = true;
 
                 clearInterval(interval);
@@ -90,6 +97,91 @@ function memo(conf){
     }
     start();
     
-    
-    
+    // clear numbers
+    function clearNums(){
+        var allNums = d.querySelectorAll('span');
+        // console.log(allNums);
+        for(var i = 0; i < allNums.length; i++){
+            if(allNums[i].className !== ('match')){
+                allNums[i].className = 'single'; //set all numbers as single
+            }
+        }
+    }
+
+    // set time for playing
+    function countDown(){
+        var interval = setInterval(function(){
+            if(g.playTime === 0){
+                clearInterval(interval);
+                gameOver(); //??
+            } else {
+                controls.innerHTML = 'You have ' + (g.playTime--) + ' seconds left to complete the game ...';
+            }
+        }, 1000);
+    }
+
+    // game over
+    function gameOver(){
+        g.gameOver = true;
+        var matched = d.querySelectorAll('span');
+
+        for(var m = 0; m < matched.length; m++){
+            if(matched[m].className === 'match') {
+            // console.log(m + 'win!');
+            controls.innerHTML = 'You win this brilliant game!';
+
+            }else{
+            console.log('ooooh!');
+            controls.innerHTML = 'Ooooh!';
+            }
+
+        }
+    }
+
+     // logic when click a box
+    function clicked(){
+        // var n = this.innerHTML;
+        var span = this.childNodes[0];
+
+        if(span.className === 'match' || span.className === 'select' || g.gameOver || !g.started) return;
+
+        if(g.picked.length === 2) {
+            g.picked = [];
+        }
+
+        if(g.picked.length === 0) {
+            g.picked[0] = span;
+            span.className = 'select';
+            // console.log('select1');
+        } else if(g.picked.length === 1){
+            g.picked[1] = span;
+            span.className = 'select';
+            // console.log('select2');
+
+            // compare selection
+            if(g.picked[0].innerHTML === g.picked[1].innerHTML) {
+                g.picked[0].className = 'match'; // set as 'match'
+                g.picked[1].className = 'match';
+                // comments.innerHTML = 'Match!';
+
+            } else{ // no match
+                g.started = false;
+                setTimeout(function(){
+                    g.started = true;
+                    clearNums();
+                }, 1000);
+                // comments.innerHTML = 'Try again!';
+            }
+        }
+
+
+        if (m.className === 'match') {
+            gameOver();
+        }
+
+
+
+
+    }
+
 }

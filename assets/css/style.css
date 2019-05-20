@@ -33,7 +33,7 @@ body {
   display: flex;
 }
 
-.game-board td span.no-select {
+.game-board td span.single {
   display: none;
 }
 
