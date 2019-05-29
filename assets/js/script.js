@@ -16,12 +16,11 @@ function memo(conf){
         n = 0, // numbers
         m = d.querySelectorAll('span'), // all matched
         // console.log(m)
-        matched = d.querySelectorAll('.match'),
+        // matched = d.querySelectorAll('.match'),
 
         g = { // game data
-
             picked: [],
-            playTime: Math.ceil((conf.columns*conf.rows)*2.5),
+            playTime: Math.ceil((conf.columns*conf.rows)*3.5),
             gameOver: false,
             started: false,
         },
@@ -33,7 +32,7 @@ function memo(conf){
                 // console.log(nums);
             }
 
-    //dublicate numbers
+    // dublicate numbers
     var numbers = nums.concat(nums);
     // shuffle total numbers
     numbers.sort(function() { return 0.5 - Math.random() });
@@ -88,7 +87,7 @@ function memo(conf){
         var interval = setInterval(function(){
             controls.innerHTML = 'The game starts in ... ' + time + ' seconds';
 
-            if(time === 0){
+            if(time == 0){
                 clearNums();
                 countDown();
                 g.started = true;
@@ -136,18 +135,16 @@ function memo(conf){
         var matched = d.querySelectorAll('.match');
 
         for(var m = 0; m < matched.length; m++){
-            // if(matched[m].className == 'match') {
             if (matched.length == 16) {
             console.log(matched);
             // console.log(matched + 'win!');
             controls.innerHTML = 'You win this brilliant game!';
-
             }else{
             console.log('ooooh!');
             controls.innerHTML = 'Game Over';
             }
-
         }
+        reset();
     }
 
      // logic when click a box
@@ -190,12 +187,47 @@ function memo(conf){
             }
         }
 
-
+        //!review
         if (m.className == 'match') {
             gameOver();
+            reset();
         }
 
+    }
+    
+    //reset game
+        function reset() {
+            var reset = d.querySelector('#reset');
+            console.log(reset);
+            if(allMatched() == true || g.playTime == 0) {
+                reset.style.display = 'block';
+                reset.addEventListener('click', function(){
+                    console.log('Play again?');
+                    playAgain();
+                    start();
+    
+                    }
+                    );
+                }
+    }
+
+        function playAgain(){
+
+            var resetNums = d.querySelectorAll('span');
+            console.log(resetNums);
+            
+            for(var i = 0; i < resetNums.length; i++){
+                if(resetNums[i].className == ('match') || g.playTime == 0){
+                    resetNums[i].className = 'single'; // reset classes
+                    // reset time?
+
+
+
+
+                }
+            }
 
     }
+    
 
 }
