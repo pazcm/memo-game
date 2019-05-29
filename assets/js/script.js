@@ -15,7 +15,9 @@ function memo(conf){
         b = d.querySelector('#play'), // board
         n = 0, // numbers
         m = d.querySelectorAll('span'), // all matched
-        // console.log(m);
+        // console.log(m)
+        matched = d.querySelectorAll('.match'),
+
         g = { // game data
 
             picked: [],
@@ -107,32 +109,42 @@ function memo(conf){
             }
         }
     }
+    
+    // get all matched numbers
+    function allMatched() {
+        var matched = document.querySelectorAll('.match');
+            if (matched.length == 16) {
+                return true;
+            }else return false;
+    }
 
     // set time for playing
     function countDown(){
         var interval = setInterval(function(){
-            if(g.playTime === 0){
+            if(g.playTime == 0 || allMatched() == true){
                 clearInterval(interval);
-                gameOver(); //??
+                gameOver();
             } else {
                 controls.innerHTML = 'You have ' + (g.playTime--) + ' seconds left to complete the game ...';
             }
         }, 1000);
     }
-
+    
     // game over
     function gameOver(){
         g.gameOver = true;
-        var matched = d.querySelectorAll('span');
+        var matched = d.querySelectorAll('.match');
 
         for(var m = 0; m < matched.length; m++){
-            if(matched[m].className === 'match') {
-            // console.log(m + 'win!');
+            // if(matched[m].className == 'match') {
+            if (matched.length == 16) {
+            console.log(matched);
+            // console.log(matched + 'win!');
             controls.innerHTML = 'You win this brilliant game!';
 
             }else{
             console.log('ooooh!');
-            controls.innerHTML = 'Ooooh!';
+            controls.innerHTML = 'Game Over';
             }
 
         }
@@ -140,26 +152,30 @@ function memo(conf){
 
      // logic when click a box
     function clicked(){
-        // var n = this.innerHTML;
-        var span = this.childNodes[0];
+       var square = this.childNodes[0]; // get tile
+       
+        if(square.className == 'match' || square.className == 'select' || !g.started || g.gameOver) return;
 
-        if(span.className === 'match' || span.className === 'select' || g.gameOver || !g.started) return;
+       var matched = document.querySelectorAll('.match');
+        if (matched.length == 16) {
+            gameOver();
+        }
 
-        if(g.picked.length === 2) {
+        if(g.picked.length == 2) {
             g.picked = [];
         }
 
-        if(g.picked.length === 0) {
-            g.picked[0] = span;
-            span.className = 'select';
+        if(g.picked.length == 0) {
+            g.picked[0] = square;
+            square.className = 'select';
             // console.log('select1');
-        } else if(g.picked.length === 1){
-            g.picked[1] = span;
-            span.className = 'select';
+        } else if(g.picked.length == 1){
+            g.picked[1] = square;
+            square.className = 'select';
             // console.log('select2');
 
             // compare selection
-            if(g.picked[0].innerHTML === g.picked[1].innerHTML) {
+            if(g.picked[0].innerHTML == g.picked[1].innerHTML) {
                 g.picked[0].className = 'match'; // set as 'match'
                 g.picked[1].className = 'match';
                 // comments.innerHTML = 'Match!';
@@ -175,11 +191,9 @@ function memo(conf){
         }
 
 
-        if (m.className === 'match') {
+        if (m.className == 'match') {
             gameOver();
         }
-
-
 
 
     }
