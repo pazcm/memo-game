@@ -20,9 +20,10 @@ function memo(conf){
 
         g = { // game data
             picked: [],
-            playTime: Math.ceil((conf.columns*conf.rows)*3.5),
+            playTime: Math.ceil((conf.columns*conf.rows)*2.5),
             gameOver: false,
             started: false,
+            reset: false,
         },
 
         // numbers that going to play
@@ -195,7 +196,7 @@ function memo(conf){
 
     }
     
-    //reset game
+    //tbc reset game
         function reset() {
             var reset = d.querySelector('#reset');
             console.log(reset);
@@ -204,11 +205,10 @@ function memo(conf){
                 reset.addEventListener('click', function(){
                     console.log('Play again?');
                     playAgain();
-                    start();
-    
-                    }
-                    );
+                    
                 }
+                );
+            }
     }
 
         function playAgain(){
@@ -219,14 +219,12 @@ function memo(conf){
             for(var i = 0; i < resetNums.length; i++){
                 if(resetNums[i].className == ('match') || g.playTime == 0){
                     resetNums[i].className = 'single'; // reset classes
-                    // reset time?
-
-
-
+                    console.log("jugar otra vez");
+                    g.reset = true;
 
                 }
             }
-
+        start();
     }
     
 
