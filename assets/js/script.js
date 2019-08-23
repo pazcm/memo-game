@@ -1,4 +1,4 @@
-document.querySelector('#start').addEventListener('click', function(){
+document.querySelector('#screen').addEventListener('click', function(){
   memo({
     id: '#play',
     columns: 4,
@@ -6,7 +6,10 @@ document.querySelector('#start').addEventListener('click', function(){
   });
 
   this.remove();
+  
+  
 })
+
 
 function memo(conf){
 
@@ -84,7 +87,7 @@ function memo(conf){
     // start game after 4 seconds .. clear numbers and start time for playing
     function start(){
         var time = Math.ceil((conf.columns * conf.rows)*0.25);
-
+        
         var interval = setInterval(function(){
             controls.innerHTML = 'The game starts in ... ' + time + ' seconds';
 
