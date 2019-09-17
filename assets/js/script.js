@@ -26,7 +26,7 @@ function memo(conf){
             playTime: Math.ceil((conf.columns*conf.rows)*2.5),
             gameOver: false,
             started: false,
-            reset: false,
+            // reset: false,
         },
 
         // numbers that going to play
@@ -49,7 +49,7 @@ function memo(conf){
             var td = d.createElement('td'),
                 span = d.createElement('span');
 
-            //insert numbers
+            // insert numbers
             span.innerHTML = numbers[n];
 
             // add event
@@ -67,7 +67,6 @@ function memo(conf){
         // console.log(t);
     }
 
-
     // append game comments to the board
     var comments = d.createElement('div');
     comments.className = 'game-comments';
@@ -84,7 +83,7 @@ function memo(conf){
     b.appendChild(controls);
 
 
-    // start game after 4 seconds .. clear numbers and start time for playing
+    // start game after 5 seconds .. clear numbers and start time for playing
     function start(){
         var time = Math.ceil((conf.columns * conf.rows)*0.25);
         
@@ -142,7 +141,7 @@ function memo(conf){
             if (matched.length == 16) {
             console.log(matched);
             // console.log(matched + 'win!');
-            controls.innerHTML = 'You win this brilliant game!';
+            controls.innerHTML = 'Brilliant! You win!';
             }else{
             console.log('ooooh!');
             controls.innerHTML = 'Game Over';
