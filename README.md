@@ -13,23 +13,78 @@ User Stories:
 
 [wireframes, mockups, diagrams ...]
 
-The aim is to make easier to the user how to get an appointment and provide them with relevant information about the clinic through a minimalist angle/style following UX Design principles, prioritising the usability and accessibility of the site.
-
-I tried to give to the game a retro look and feel and make it as simple as possible for a user to play a quick round.
+I tried to give to the game a retro look and feel and make it simple and easy for playing although cool for the user to play a quick round.
 
 ## LOGIC
 
-    The game consists in create a table and a board by using javascript which will show some content, in this case 8 pair of numbers and where some comments will be displayed.
+The game consists in create a table and a board by using javascript which will show some content, in this case 8 pair of numbers and where some comments will be displayed.
+
 The numbers to play (16 in total) are calculated multiplying the columns(4) by the rows(4) and divide by 2 which will be stored in an array. After this the numbers will be duplicated to get 8 pairs of numbers to be matched.
+
 On the other hand, the user have to get a random order of the numbers each time the game starts, which is achieved through a sort method and Math.random fucntion.
+
 How does the game start? An event listener will trigger when a user clicks the start button.
+
 The logic when the user clicks a box, lies in giving an empty array, each time that a square with a number is picked its value is stored and a class is added, then it compares the two selected values, if they are the same, other css class is added.
+
 To allow only two clicks, the length of the array is equal to 2.
+
 How does the game finish? A game over function was created which consits in a for loop that iterate through the numbers to check if they have the same class. Also a count down function with a time interval will end the game.
+
 
 ## Features
 
 - Clickable buttons (Start/Reset)
 - Timer
 - Messages
-- Mix number/ shuttle    
+- Mix number/ shuttle
+-
+
+### Features Left to Implement
+- Reset button
+- Score
+- Estadistics 2/3
+- Sound
+
+## Technologies Used
+
+- [IDE Cloud9](console.aws.amazon.com/cloud9/ide)
+  - The project uses an online IDE for development.
+
+- [Git/GitHub](https://github.com)
+  - The project uses **Git** version control to manage and track the changes in the code and host this project.
+
+- [HTML5](https://html.spec.whatwg.org/multipage/)
+    - The project uses semantic **HTML5** elements to structure and present the content.
+
+- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+    - The project uses **JavaScript** as a main programming language to initialize and run the app.
+
+- [CSS3](https://www.w3.org/Style/CSS/)
+  - The project uses **CSS3** to create the look and feel with a custom style.
+
+## Testing
+manual testing ...
+
+>> test case:
+[]. Play a round:
+    0. Push 'Play' button.
+    1. Check that the button is removed and a board with a table filled with numbers is showed. 
+    2. Check the game starts after 5 seconds.
+    3. Check that a count down time is showing when the game started.
+    4. Click two squares and check that they disappear if no match or they remain visible if they match.
+    5. Check that the game is over when the count down is 0.
+    6. Check that the game is over when all squares are matched and a winner messaged is displayed in the board.
+    
+
+## Deployment
+
+I used GitHub to host the project, I created a repo for it to live in and it was developed in one branch (master)
+
+I set the Source/master branch and published, under my project settings/GitHub Pages. [https://pazcm.github.io/memo-game]
+
+## Credits
+
+https://www.w3schools.com/howto/howto_js_countdown.asp
+css tricks
+css button
