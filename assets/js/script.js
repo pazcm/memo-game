@@ -123,8 +123,8 @@ function memo(conf){
     // set time for playing
     function countDown(){
         var interval = setInterval(function(){
-            if(g.playTime == 0 || allMatched() == true){
-                clearInterval(interval);
+            if(g.playTime = 0  || allMatched() == true){
+                console.log(g.playTime + 'hola');
                 gameOver();
             } else {
                 controls.innerHTML = 'You have ' + (g.playTime--) + ' seconds left to complete the game ...';
@@ -141,22 +141,24 @@ function memo(conf){
             if (matched.length == 16) {
             console.log(matched);
             // console.log(matched + 'win!');
-            controls.innerHTML = 'Brilliant! You win!';
-            }else{
+            controls.innerHTML = 'You win!';
+            }else {
             console.log('ooooh!');
             controls.innerHTML = 'Game Over';
             }
         }
-        reset();
+        // reset();
+        
     }
-
+    
+    
      // logic when click a box
     function clicked(){
        var square = this.childNodes[0]; // get tile
        
         if(square.className == 'match' || square.className == 'select' || !g.started || g.gameOver) return;
 
-       var matched = document.querySelectorAll('.match');
+        var matched = document.querySelectorAll('.match');
         if (matched.length == 16) {
             gameOver();
         }
@@ -174,7 +176,7 @@ function memo(conf){
             square.className = 'select';
             // console.log('select2');
 
-            // compare selection
+            // compare values of selection
             if(g.picked[0].innerHTML == g.picked[1].innerHTML) {
                 g.picked[0].className = 'match'; // set as 'match'
                 g.picked[1].className = 'match';
@@ -193,41 +195,42 @@ function memo(conf){
         //!review
         if (m.className == 'match') {
             gameOver();
-            reset();
+            // reset();
         }
-
+        
+        
     }
     
     //tbc reset game
-        function reset() {
-            var reset = d.querySelector('#reset');
-            console.log(reset);
-            if(allMatched() == true || g.playTime == 0) {
-                reset.style.display = 'block';
-                reset.addEventListener('click', function(){
-                    console.log('Play again?');
-                    playAgain();
+    //     function reset() {
+    //         var reset = d.querySelector('#reset');
+    //         console.log(reset);
+    //         if(allMatched() == true || g.playTime == 0) {
+    //             reset.style.display = 'block';
+    //             reset.addEventListener('click', function(){
+    //                 console.log('Play again?');
+    //                 playAgain();
                     
-                }
-                );
-            }
-    }
+    //             }
+    //             );
+    //         }
+    // }
 
-        function playAgain(){
+    //     function playAgain(){
 
-            var resetNums = d.querySelectorAll('span');
-            console.log(resetNums);
+    //         var resetNums = d.querySelectorAll('span');
+    //         console.log(resetNums);
             
-            for(var i = 0; i < resetNums.length; i++){
-                if(resetNums[i].className == ('match') || g.playTime == 0){
-                    resetNums[i].className = 'single'; // reset classes
-                    console.log("jugar otra vez");
-                    g.reset = true;
+    //         for(var i = 0; i < resetNums.length; i++){
+    //             if(resetNums[i].className == ('match') || g.playTime == 0){
+    //                 resetNums[i].className = 'single'; // reset classes
+    //                 console.log("jugar otra vez");
+    //                 g.reset = true;
 
-                }
-            }
-        start();
-    }
+    //             }
+    //         }
+    //     start();
+    // }
     
 
 }

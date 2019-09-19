@@ -71,17 +71,27 @@ How does the game finish? A game over function was created which consits in a fo
 
 Manual testing for compatibility issues and responsive design. All pages of the website were tested continuously during the development. Chrome and Chrome Developer Tools were the main browser and tool used for testing. Moreover, the site was tested using Firefox and Safari browsers.
 
->> HTML was validated using the Markup Validation Service provided by The World Wide Web Consortium: https://validator.w3.org/
->> CSS was validated using the CSS Validation Service provided by The World Wide Web Consortium: https://jigsaw.w3.org/css-validator/
+>> - HTML was validated using the Markup Validation Service provided by The World Wide Web Consortium: https://validator.w3.org/
 
->> test case:
+>> - CSS was validated using the CSS Validation Service provided by The World Wide Web Consortium: https://jigsaw.w3.org/css-validator/
+
+
+>>> Test case:
+
 []. Play a round:
+
     0. Push 'Play' button.
+
     1. Check that the button is removed and a board with a table filled with numbers is showed. 
+
     2. Check the game starts after 5 seconds.
+
     3. Check that a count down time is showing when the game started.
+
     4. Click two squares and check that they disappear if no match or they remain visible if they match.
+
     5. Check that the game is over when the count down is 0.
+
     6. Check that the game is over when all squares are matched and a winner messaged is displayed in the board.
     
 
