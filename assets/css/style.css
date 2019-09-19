@@ -3,6 +3,7 @@
 body {
   font-family: 'Orbitron', sans-serif;
   background-color: white;
+  background-image: url("../images/space-bg.gif");
   
 }
 
@@ -23,6 +24,7 @@ table.game-board {
   border-collapse: collapse;
   border: 1px solid #fff;
   margin: auto;
+  
 }
 
 table.game-board td {
@@ -31,6 +33,17 @@ table.game-board td {
   height: 80px;
   width: 80px;
   text-align: center;
+  /*-- neon effect --*/
+  box-shadow: 0 0 1px #029, 
+  0 0 2px #029, 
+  0 0 6px #029, 
+  0 0 12px #029, 
+  inset 0 0 1px #029, 
+  inset 0 0 2px #029, 
+  inset 0 0 6px #029, 
+  inset 0 0 14px #029;
+  /*padding: 4rem 6rem 5.5rem;*/
+  border-radius: 0;
 }
 
 table.game-board td span {
@@ -48,6 +61,7 @@ table.game-board td span.match {
 
 table.game-board td span.select {
   background: #00f;
+  /*background: #029;*/
   font-weight: bold;
   display: block;
 }
@@ -150,7 +164,18 @@ table.game-board td span.single {
   justify-content: center;
   background-color: #5d6160;
   height: 100%;
-  
+  /*-- neon effect --*/
+  box-shadow: 0 0 1px #029, 
+  0 0 2px #029, 
+  0 0 6px #029, 
+  0 0 12px #029, 
+  inset 0 0 1px #029, 
+  inset 0 0 2px #029, 
+  inset 0 0 6px #029, 
+  inset 0 0 14px #029;
+  padding: 4rem 6rem 5.5rem;
+  border-radius: 2rem;
+
 }
 
 .screen-container {
@@ -163,7 +188,6 @@ table.game-board td span.single {
   position: relative;
   margin: 20px 0;
   border-radius: 50% / 10%;
-  
 }
 
 .screen-container:before {
@@ -177,7 +201,6 @@ table.game-board td span.single {
   border-radius: 5% / 50%;
   
 }
-
 
 
 /* -- Media Queries -- */
