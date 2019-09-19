@@ -9,25 +9,20 @@ document.querySelector('#screen').addEventListener('click', function(){
 })
 
 function memo(conf){
-
     var d = document, // document
         t = d.createElement('table'), // table
         b = d.querySelector('#play'), // board
         n = 0, // numbers
         m = d.querySelectorAll('span'), // all matched
-        // console.log(m)
-        // matched = d.querySelectorAll('.match'),
-        
+        // create reset button
         reset = d.createElement('button');
-
         reset.innerHTML = 'Reset Game';
         reset.className = 'reset';
-
+        // restart the game
         reset.onclick = function () {
             document.querySelector('.game-comments').remove();
             document.querySelector('.game-board').remove();
             document.querySelector('.game-controls').remove();
-            
             memo({
                 id: '#play',
                 columns: 4,
@@ -37,17 +32,15 @@ function memo(conf){
 
         g = { // game data
             picked: [],
-            playTime: Math.ceil((conf.columns*conf.rows)*1.5),
+            playTime: Math.ceil((conf.columns*conf.rows)*2.5),
             gameOver: false,
             started: false,
-            // reset: false,
         },
 
         // numbers that going to play
         nums = [];
             for(var i = 1; i <= (conf.columns*conf.rows) / 2; i++){
                 nums.push(i);
-                // console.log(nums);
             }
 
     // dublicate numbers
@@ -68,7 +61,6 @@ function memo(conf){
 
             // add event
             td.addEventListener('click', clicked);
-            console.log('click');
 
             // append to table
             tr.appendChild(td);
@@ -78,7 +70,6 @@ function memo(conf){
         }
 
         t.appendChild(tr);
-        // console.log(t);
     }
 
     // append game comments to the board
@@ -89,7 +80,6 @@ function memo(conf){
     // create board where numbers will be displayed and append table to it
     t.className = 'game-board';
     b.appendChild(t);
-    console.log(b);
 
     // append panel controls to the board
     var controls = d.createElement('div');
@@ -118,7 +108,6 @@ function memo(conf){
     // clear numbers
     function clearNums(){
         var allNums = d.querySelectorAll('span');
-        // console.log(allNums);
         for(var i = 0; i < allNums.length; i++){
             if(allNums[i].className !== ('match')){
                 allNums[i].className = 'single'; //set all numbers as single
@@ -138,7 +127,6 @@ function memo(conf){
     function countDown(){
         var interval = setInterval(function(){
             if(g.playTime == 0  || allMatched() == true){
-                console.log(g.playTime + 'hola');
                 gameOver();
             } else {
                 controls.innerHTML = 'You have ' + (g.playTime--) + ' seconds left to complete the game ...';
@@ -153,18 +141,15 @@ function memo(conf){
 
         for(var m = 0; m < matched.length; m++){
             if (matched.length == 16) {
-            console.log(matched);
-            // console.log(matched + 'win!');
             controls.innerHTML = 'You win!';
             }else {
-            console.log('ooooh!');
             controls.innerHTML = 'Game Over';
             }
         }
-        controls.appendChild(reset);
-        
+        // controls.appendChild(reset);
+        // t.appendChild(reset);
+        comments.appendChild(reset);
     }
-    
     
      // logic when click a box
     function clicked(){
@@ -184,11 +169,9 @@ function memo(conf){
         if(g.picked.length == 0) {
             g.picked[0] = square;
             square.className = 'select';
-            // console.log('select1');
         } else if(g.picked.length == 1){
             g.picked[1] = square;
             square.className = 'select';
-            // console.log('select2');
 
             // compare values of selection
             if(g.picked[0].innerHTML == g.picked[1].innerHTML) {
@@ -205,46 +188,5 @@ function memo(conf){
                 // comments.innerHTML = 'Try again!';
             }
         }
-
-        //!review
-        if (m.className == 'match') {
-            gameOver();
-            // reset();
-        }
-        
-        
     }
-    
-    //tbc reset game
-    //     function reset() {
-    //         var reset = d.querySelector('#reset');
-    //         console.log(reset);
-    //         if(allMatched() == true || g.playTime == 0) {
-    //             reset.style.display = 'block';
-    //             reset.addEventListener('click', function(){
-    //                 console.log('Play again?');
-    //                 playAgain();
-                    
-    //             }
-    //             );
-    //         }
-    // }
-
-    //     function playAgain(){
-
-    //         var resetNums = d.querySelectorAll('span');
-    //         console.log(resetNums);
-            
-    //         for(var i = 0; i < resetNums.length; i++){
-    //             if(resetNums[i].className == ('match') || g.playTime == 0){
-    //                 resetNums[i].className = 'single'; // reset classes
-    //                 console.log("jugar otra vez");
-    //                 g.reset = true;
-
-    //             }
-    //         }
-    //     start();
-    // }
-    
-
 }
