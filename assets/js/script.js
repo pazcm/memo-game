@@ -6,10 +6,7 @@ document.querySelector('#screen').addEventListener('click', function(){
   });
 
   this.remove();
-  
-  
 })
-
 
 function memo(conf){
 
@@ -20,10 +17,27 @@ function memo(conf){
         m = d.querySelectorAll('span'), // all matched
         // console.log(m)
         // matched = d.querySelectorAll('.match'),
+        
+        reset = d.createElement('button');
+
+        reset.innerHTML = 'Reset Game';
+        reset.className = 'reset';
+
+        reset.onclick = function () {
+            document.querySelector('.game-comments').remove();
+            document.querySelector('.game-board').remove();
+            document.querySelector('.game-controls').remove();
+            
+            memo({
+                id: '#play',
+                columns: 4,
+                rows: 4
+            });
+        };
 
         g = { // game data
             picked: [],
-            playTime: Math.ceil((conf.columns*conf.rows)*2.5),
+            playTime: Math.ceil((conf.columns*conf.rows)*1.5),
             gameOver: false,
             started: false,
             // reset: false,
@@ -123,7 +137,7 @@ function memo(conf){
     // set time for playing
     function countDown(){
         var interval = setInterval(function(){
-            if(g.playTime = 0  || allMatched() == true){
+            if(g.playTime == 0  || allMatched() == true){
                 console.log(g.playTime + 'hola');
                 gameOver();
             } else {
@@ -147,7 +161,7 @@ function memo(conf){
             controls.innerHTML = 'Game Over';
             }
         }
-        // reset();
+        controls.appendChild(reset);
         
     }
     
