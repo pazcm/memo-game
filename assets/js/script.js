@@ -147,7 +147,6 @@ function memo(conf){
             }
         }
         // controls.appendChild(reset);
-        // t.appendChild(reset);
         comments.appendChild(reset);
     }
     

@@ -10,6 +10,7 @@ User Stories:
 - As a user, I want to see messages so I know what's going on.
 - As a user, I want to see a timer to glance how long I'm playing.
 - As a user, I want to see the game satisfactory in my mobile and tablet so I can play in any device.
+- As a user, I want to see a reset button, so I can restart the game from there.
 
 [wireframes, mockups, diagrams ...]
 
@@ -35,14 +36,16 @@ How does the game finish? A game over function was created which consits in a fo
 
 ## Features
 
-- Clickable button (Play)
-- Timer
-- Messages / Feedback
-- Mix numbers
+- Clickable buttons (Play & Reset) .- These features allow the user to initialize the game.
+- Timer .- This feature is implemented twice to set an interval of time for starting and for complete and finalize the game. 
+- Messages / Feedback .- A message shows up when the game is completed.
+- Random numbers generator .- This functions is triggered each time that the user starts the game.
 
 
 ### Features Left to Implement
-- Reset button
+
+Features that I would like to add in a future:
+
 - Score
 - Estadistics 2/3
 - Sound
@@ -51,6 +54,9 @@ How does the game finish? A game over function was created which consits in a fo
 
 - [IDE Cloud9](console.aws.amazon.com/cloud9/ide)
     - The project uses an online IDE for development.
+
+- [SublimeText](https://www.sublimetext.com/3)
+    - The project used a secondary IDE for local development.
 
 - [Git/GitHub](https://github.com)
     - The project uses **Git** version control to manage and track the changes in the code and host this project.
@@ -90,11 +96,15 @@ Manual testing for compatibility issues and responsive design. All pages of the 
 
     4. Click two squares and check that they disappear if no match or they remain visible if they match.
 
-    5. Check that the game is over when the count down is 0.
+    5. Check that the game is over when the count down is 0 and 'Game Over' message is displayed in the board and a Reset button is displyed.
 
-    6. Check that the game is over when all squares are matched and a winner messaged is displayed in the board.
+    6. Check that the game is over when all squares are matched and a winner messaged is displayed in the board and a Reset button is displyed.
     
-
+    7. Push 'Reset' button.
+    
+    8. Check that the game restart.
+    
+    
 ## Deployment
 
 I used [GitHub](https://github.com) to host the project, I created a repo for it to live in and it was developed in one branch (master)
@@ -107,5 +117,7 @@ https://www.w3schools.com/howto/howto_js_countdown.asp
 
 https://css-tricks.com/snippets/javascript/shuffle-array/ 
 
-Style Fancy Buttons: https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ 
+Style Fancy Buttons: https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
+
+Thank you to my Mentor for all the feedback and specially for helping me with the Reset button.
 
