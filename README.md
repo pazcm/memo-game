@@ -1,7 +1,11 @@
 # Memory Game
 
-This project was built as a simple, dynamic and interactive memory game example to practice how to apply Javascript. In first place, a start button is showed. When the user push it, a table is displayed with some unordered numbers along as a count down time to give some time to the user memorize. Then, the game will start and some fix time is given to complete the game.
-If the user matches all numbers and finishes in time, wins the game! If not, ... loses :/
+This project was built as a simple, dynamic and interactive memory game example to practice how to apply Javascript.
+It recreates a match pairs memory game.
+In first place, a start button is showed. When the user push it, a table is displayed with some unordered numbers along as a count down time to give some time to the user memorize.
+Then, the game will start and some fix time is given to complete the game.
+If the user matches all numbers and finishes in time, wins the game! If not, ... loses :/ 
+The user can restart the game.
 
 ## UX
 
@@ -12,9 +16,7 @@ User Stories:
 - As a user, I want to see the game satisfactory in my mobile and tablet so I can play in any device.
 - As a user, I want to see a reset button, so I can restart the game from there.
 
-[wireframes, mockups, diagrams ...]
-
-I tried to give to the game a retro look and feel and make it simple and easy for playing although cool for the user to play a quick round.
+I tried to give to the game a minimalist retro look and feel, and make it simple and easy for playing although cool for the user to play a quick round.
 
 ## LOGIC
 
@@ -36,19 +38,19 @@ How does the game finish? A game over function was created which consits in a fo
 
 ## Features
 
-- Clickable buttons (Play & Reset) .- These features allow the user to initialize the game.
-- Timer .- This feature is implemented twice to set an interval of time for starting and for complete and finalize the game. 
-- Messages / Feedback .- A message shows up when the game is completed.
-- Random numbers generator .- This functions is triggered each time that the user starts the game.
+- **Clickable buttons (Play & Reset)** .- These features allow the user to initialize the game.
+- **Timer** .- This feature is implemented twice to set an interval of time for starting and for complete and finalize the game. 
+- **Messages / Feedback** .- A message shows up when the game is completed.
+- **Random numbers generator** .- This functions is triggered each time that the user starts the game.
 
 
 ### Features Left to Implement
 
 Features that I would like to add in a future:
 
-- Score
-- Estadistics 2/3
-- Sound
+- **Score**
+- **Estadistics 2/3**
+- **Sound**
 
 ## Technologies Used
 
@@ -119,5 +121,5 @@ https://css-tricks.com/snippets/javascript/shuffle-array/
 
 Style Fancy Buttons: https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ
 
-Thank you to my Mentor for all the feedback and specially for helping me with the Reset button.
+Thank you to my Mentor for all the feedback and specially for helping me with the Reset button!
 
